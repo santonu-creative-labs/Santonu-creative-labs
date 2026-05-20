@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Santonu Creative Labs</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #020617;
+            color: white;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* CUSTOM SCROLLBAR */
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#6c63ff, #00c2ff);
+            border-radius: 20px;
+        }
+
+        /* SCROLL PROGRESS */
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            z-index: 999999;
+            background: linear-gradient(90deg, #6c63ff, #00c2ff);
+        }
+
+        /* CURSOR */
+
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00c2ff;
+
+            box-shadow:
+                0 0 20px #00c2ff,
+                0 0 50px #6c63ff;
+
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 999999;
+            transition: 0.08s linear;
+        }
+
+        /* PARTICLES */
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+
+        .particles span {
+            position: absolute;
+            display: block;
+            border-radius: 50%;
+            background: white;
+
+            box-shadow:
+                0 0 10px #00c2ff,
+                0 0 30px #6c63ff;
+
+            animation: particles linear infinite;
+        }
+
+        @keyframes particles {
+
+            0% {
+                transform:
+                    translateY(100vh) scale(0);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(-20vh) translateX(100px) scale(1.2);
+
+                opacity: 0;
+            }
+
+        }
+
+        /* FLOATING ICONS */
+
+        .floating-icons span {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: 30px;
+            animation: floatingIcons linear infinite;
+        }
+
+        .floating-icons span:nth-child(1) {
+            left: 10%;
+            animation-duration: 18s;
+        }
+
+        .floating-icons span:nth-child(2) {
+            left: 30%;
+            animation-duration: 24s;
+        }
+
+        .floating-icons span:nth-child(3) {
+            left: 55%;
+            animation-duration: 20s;
+        }
+
+        .floating-icons span:nth-child(4) {
+            left: 75%;
+            animation-duration: 26s;
+        }
+
+        .floating-icons span:nth-child(5) {
+            left: 90%;
+            animation-duration: 30s;
+        }
+
+        @keyframes floatingIcons {
+
+            0% {
+                top: 110%;
+                transform: rotate(0deg);
+            }
+
+            100% {
+                top: -10%;
+                transform: rotate(360deg);
+            }
+
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 8%;
+
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            z-index: 9999;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 800;
+
+            background:
+                linear-gradient(90deg,
+                    #6c63ff,
+                    #00c2ff);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: logoGlow 3s infinite alternate;
+        }
+
+        @keyframes logoGlow {
+
+            from {
+                text-shadow: 0 0 10px #6c63ff;
+            }
+
+            to {
+                text-shadow:
+                    0 0 20px #00c2ff,
+                    0 0 50px #6c63ff;
+            }
+
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        nav ul li a:hover {
+            color: #00c2ff;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            text-align: center;
+            padding: 120px 8%;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 85px;
+            line-height: 1.1;
+            font-weight: 900;
+
+            animation: heroFade 1.2s ease;
+        }
+
+        .hero h1 span {
+
+            background:
+                linear-gradient(90deg,
+                    #6c63ff,
+                    #00c2ff);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes heroFade {
+
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .hero p {
+            max-width: 850px;
+            margin-top: 25px;
+            color: #cfcfcf;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .typing {
+            color: #00c2ff;
+            font-size: 22px;
+            margin-top: 20px;
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        /* BUTTONS */
+
+        .btns {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+
+            content: '';
+
+            position: absolute;
+            top: 0;
+            left: -120%;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.4),
+                    transparent);
+
+            transition: 0.8s;
+        }
+
+        .btn:hover::before {
+            left: 120%;
+        }
+
+        .primary {
+            background: linear-gradient(90deg, #6c63ff, #00c2ff);
+            color: white;
+        }
+
+        .primary:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 0 20px #00c2ff,
+                0 0 50px #6c63ff;
+        }
+
+        .secondary {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 8%;
+
+            animation: sectionFade linear;
+            animation-timeline: view();
+            animation-range: entry 0 cover 35%;
+        }
+
+        @keyframes sectionFade {
+
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+        }
+
+        .section-title p {
+            color: #cfcfcf;
+            margin-top: 10px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card,
+        .about-box,
+        .contact-box {
+
+            background:
+                rgba(255, 255, 255, 0.05);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(20px);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card {
+            padding: 35px;
+            transition: 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover {
+
+            box-shadow:
+                0 0 30px rgba(0, 194, 255, 0.3),
+                0 0 80px rgba(108, 99, 255, 0.25);
+
+            border-color: #00c2ff;
+        }
+
+        .card h3 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #00c2ff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            color: #d7d7d7;
+            line-height: 1.9;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .about-box {
+            padding: 40px;
+        }
+
+        .about-box h3 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .about-box p {
+            color: #d7d7d7;
+            line-height: 1.9;
+        }
+
+        /* STATS */
+
+        .stats {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        .stat:hover {
+
+            transform:
+                translateY(-10px) scale(1.05);
+
+            box-shadow:
+                0 0 30px rgba(0, 194, 255, 0.2);
+        }
+
+        .stat h4 {
+            font-size: 35px;
+            color: #00c2ff;
+            margin-bottom: 10px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 50px;
+            transition: 0.5s;
+        }
+
+        .contact-box:hover {
+
+            box-shadow:
+                0 0 30px rgba(0, 194, 255, 0.2),
+                0 0 80px rgba(108, 99, 255, 0.15);
+        }
+
+        .contact-box h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box p {
+            color: #cfcfcf;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: #a9a9a9;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            body {
+                cursor: auto;
+            }
+
+            .cursor {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .typing {
+                font-size: 16px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- CURSOR -->
+    <div class="cursor"></div>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress"></div>
+
+    <!-- PARTICLES -->
+    <div class="particles"></div>
+
+    <!-- FLOATING ICONS -->
+    <div class="floating-icons">
+        <span>✦</span>
+        <span>✧</span>
+        <span>⬢</span>
+        <span>◆</span>
+        <span>●</span>
+    </div>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Santonu Creative Labs
+        </div>
+
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            Build Your Digital Presence With
+            <span>Santonu Creative Labs</span>
+        </h1>
+
+        <p>
+            Premium websites, creative presentations,
+            LinkedIn optimization, portfolio building,
+            business branding, and futuristic digital
+            solutions crafted with creativity and innovation.
+        </p>
+
+        <div class="typing"></div>
+
+        <div class="btns">
+
+            <a href="#services" class="btn primary">
+                Explore Services
+            </a>
+
+            <a href="#contact" class="btn secondary">
+                Hire Me
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- SERVICES -->
+
+    <section id="services">
+
+        <div class="section-title">
+
+            <h2>Our Services</h2>
+
+            <p>
+                Affordable pricing with premium quality work
+            </p>
+
+        </div>
+
+        <div class="services">
+
+            <div class="card">
+
+                <h3>PowerPoint Presentations</h3>
+
+                <div class="price">
+                    ₹300 – ₹1000
+                </div>
+
+                <ul>
+                    <li>4K Creative Slides</li>
+                    <li>Business Presentations</li>
+                    <li>Animations & Effects</li>
+                    <li>School & College PPT</li>
+                    <li>Professional Themes</li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Portfolio Creation</h3>
+
+                <div class="price">
+                    ₹3,000 – ₹50,000
+                </div>
+
+                <ul>
+                    <li>Student Portfolio</li>
+                    <li>Professional Showcase</li>
+                    <li>Creative Branding</li>
+                    <li>Photography Portfolio</li>
+                    <li>Premium UI Design</li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>LinkedIn & Resume</h3>
+
+                <div class="price">
+                    ₹2,000 – ₹7,000
+                </div>
+
+                <ul>
+                    <li>ATS Friendly Resume</li>
+                    <li>LinkedIn Optimization</li>
+                    <li>Professional Summary</li>
+                    <li>Modern Resume Design</li>
+                    <li>Recruiter Ready Profile</li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Portfolio Websites</h3>
+
+                <div class="price">
+                    ₹10,000 – ₹75,000+
+                </div>
+
+                <ul>
+                    <li>Responsive Design</li>
+                    <li>Premium Animations</li>
+                    <li>SEO Optimized</li>
+                    <li>Modern UI/UX</li>
+                    <li>Fast Loading</li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Full Stack Websites</h3>
+
+                <div class="price">
+                    ₹10,000 – ₹1,50,000+
+                </div>
+
+                <ul>
+                    <li>Business Websites</li>
+                    <li>Authentication Systems</li>
+                    <li>Admin Dashboard</li>
+                    <li>Database Integration</li>
+                    <li>Modern Tech Stack</li>
+                </ul>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Excel & Spreadsheet Work</h3>
+
+                <div class="price">
+                    Custom Pricing
+                </div>
+
+                <ul>
+                    <li>Automation</li>
+                    <li>Dashboards</li>
+                    <li>Invoices & Databases</li>
+                    <li>Excel VBA & Macros</li>
+                    <li>Data Management</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="about">
+
+            <div class="about-box">
+
+                <h3>Why Choose Us?</h3>
+
+                <p>
+                    Santonu Creative Labs delivers
+                    modern digital experiences with
+                    premium visuals, futuristic design,
+                    responsive development, and high
+                    performance solutions for creators,
+                    businesses, startups, and students.
+                </p>
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <h4>150+</h4>
+                        <p>Happy Customers</p>
+                    </div>
+
+                    <div class="stat">
+                        <h4>300+</h4>
+                        <p>Projects Delivered</p>
+                    </div>
+
+                    <div class="stat">
+                        <h4>4.9★</h4>
+                        <p>Client Ratings</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="about-box">
+
+                <h3>Extra Information</h3>
+
+                <p>
+                    Custom domain charges may apply
+                    (₹200–₹300 extra). Spreadsheet
+                    and automation pricing will be
+                    discussed during the client call.
+                </p>
+
+                <br>
+
+                <p>
+                    Referral Program:
+                    Anyone connecting us with a client
+                    receives 15%–20% commission from
+                    the final customer payment.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <div class="contact-box">
+
+            <h2>
+                Let’s Build Something Amazing
+            </h2>
+
+            <p>
+                Need a website, portfolio,
+                presentation, LinkedIn profile,
+                or business branding?
+                Contact Santonu Creative Labs today.
+            </p>
+
+            <a href="https://forms.gle/iCV5ub88rWc7SFu36" class="btn primary">
+                Contact Now
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Santonu Creative Labs — All Rights Reserved.
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* PARTICLES */
+
+        const particlesContainer =
+            document.querySelector(".particles");
+
+        for (let i = 0; i < 120; i++) {
+
+            const particle =
+                document.createElement("span");
+
+            let size =
+                Math.random() * 5 + 1;
+
+            particle.style.width =
+                size + "px";
+
+            particle.style.height =
+                size + "px";
+
+            particle.style.left =
+                Math.random() * window.innerWidth + "px";
+
+            particle.style.top =
+                Math.random() * window.innerHeight + "px";
+
+            particle.style.animationDuration =
+                (Math.random() * 15 + 8) + "s";
+
+            particle.style.animationDelay =
+                Math.random() * 5 + "s";
+
+            particlesContainer.appendChild(particle);
+        }
+
+        /* CUSTOM CURSOR */
+
+        const cursor =
+            document.querySelector(".cursor");
+
+        document.addEventListener("mousemove", (e) => {
+
+            cursor.style.left =
+                e.clientX + "px";
+
+            cursor.style.top =
+                e.clientY + "px";
+
+        });
+
+        /* SCROLL PROGRESS */
+
+        window.addEventListener("scroll", () => {
+
+            let scrollTop =
+                document.documentElement.scrollTop;
+
+            let scrollHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            let progress =
+                (scrollTop / scrollHeight) * 100;
+
+            document.querySelector(".scroll-progress")
+                .style.width = progress + "%";
+
+        });
+
+        /* TYPING EFFECT */
+
+        const text =
+            "Premium Digital Experiences";
+
+        let index = 0;
+
+        function typing() {
+
+            if (index < text.length) {
+
+                document.querySelector(".typing")
+                    .innerHTML += text.charAt(index);
+
+                index++;
+
+                setTimeout(typing, 100);
+
+            }
+
+        }
+
+        typing();
+
+        /* 3D CARD EFFECT */
+
+        const cards =
+            document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+
+            card.addEventListener("mousemove", (e) => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                const rotateY =
+                    ((x / rect.width) - 0.5) * 20;
+
+                const rotateX =
+                    ((y / rect.height) - 0.5) * -20;
+
+                card.style.transform =
+                    `
+        perspective(1000px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        scale(1.05)
+        `;
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+
+                card.style.transform =
+                    `
+        perspective(1000px)
+        rotateX(0deg)
+        rotateY(0deg)
+        scale(1)
+        `;
+
+            });
+
+        });
+
+
+    
+
+    </script>
+
+</body>
+
+</html>
